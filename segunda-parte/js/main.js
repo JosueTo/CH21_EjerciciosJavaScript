@@ -17,6 +17,14 @@ let inputMultiplo3 = document.getElementById("multiplo3");
 let btnMultiplo3 = document.getElementById("btnMultiplo3");
 let alertMultiplo3 = document.getElementById("alertMultiplo3");
 
+// Variables del ejercicio 5
+let numeroSuma1 = document.getElementById("numeroSuma1");
+let numeroSuma2 = document.getElementById("numeroSuma2");
+let numeroSuma3 = document.getElementById("numeroSuma3");
+let btnSuma = document.getElementById("btnSuma");
+let alertSuma = document.getElementById("alertSuma");
+
+
 
 // Solicitar 3 números (entre el 1 y el 100) y definir cual es el mayor
 btnMayor.addEventListener("click", function(event) {
@@ -75,5 +83,24 @@ function multiplo3(number) {
   }
 }
 
+// Elaborar un algoritmo para leer 3 números y determinar sí uno es la suma de los otros dos
+
+btnSuma.addEventListener("click", numerosSuman);
+
+function numerosSuman(num1, num2, num3) {
+  num1 = parseInt(numeroSuma1.value);
+  num2 = parseInt(numeroSuma2.value);
+  num3 = parseInt(numeroSuma3.value);
+
+  if (num1 == (num2 + num3)){
+    alertSuma.innerHTML = `El número ${num1} es igual a la suma del ${num2} y ${num3}`;
+  } else if (num2 == (num1 + num3)){
+    alertSuma.innerHTML = `El número ${num2} es igual a la suma del ${num1} y ${num3}`;
+  } else if (num3 == (num2+ num1)){
+    alertSuma.innerHTML = `El número ${num3} es igual a la suma del ${num1} y ${num2}`;
+  } else {
+    alertSuma.innerHTML = "Ningún número es la suma de los otros dos";
+  }
+}
 
 
