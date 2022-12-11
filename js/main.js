@@ -31,3 +31,57 @@ function smallestNumber(numbers) {
   })
   console.log(num);
 } // Llamas la variable en consola y te da el resultado de -1
+
+
+// Ejercicio #3
+// Escribir una función que permita saber si un número se repite dentro de un arreglo.
+// Blockquote Casos de prueba:
+// Caso 1: Resultado esperado: El número 5 se encuentra más de una vez [1, 22, 5, 17, 10, 5, 40, 5]
+// Caso 2: Resultado esperado: El número 7 se encuentra más de una vez [7, 41, 5, 7, 10, 13, 2]
+// Caso 3: Resultado esperado: No hay números repetidos [1, 22, 5, 14, 24, 31, 27, 15, 105]
+
+function numberRepeated(arreglo) {
+  let num = 0;
+  
+  for (let i = 0; i < arreglo.length; i++) {
+    for (let j = 1; j < arreglo.length; j++) {
+      if (arreglo[i] == arreglo[j]) {
+        num = arreglo[i];
+      };     
+    } 
+    
+  }
+
+  if (num != 0) {
+    return `El número ${num} se encuentra más de una vez`;
+  } else {
+    return `No hay números repetidos`;
+  }
+}
+
+// Ejercicio #4
+// Escribir una función que tome un arreglo ordenado y devuelva un arreglo completamente desordenado 
+// Entrada: [1, 2, 5, 14, 24, 31, 50, 105] Posible salida: [105, 31, 14, 1, 2, 50, 24, 5]
+
+function randomArray(array) {
+  
+  let arrayLength = array.length;
+
+  for (let i = 0; i < array.length; i++){
+    let randomPosition = Math.floor(Math.random() * arrayLength);
+    let currentIndex = array[i];
+    array[i] = array[randomPosition];
+    array[randomPosition] = currentIndex;
+  }
+  return array;
+}
+
+// ESTE LO INTENTÉ PERO NO ME DA EL RESULTADO ESPERADO, ME REGRESA UN NUEVO ARRAY RANDOM, PERO 
+// ME PUEDE REGRESAR NÚMEROS REPETIDOS Y NO UTILIZAR TODOS.
+  // let randomArray = []
+  // for (let i = array.length; i > 0; i--){
+  //   let randomPosition = Math.floor(Math.random() * arrayLength)
+  //   randomArray.push(array[randomPosition]);
+  // }
+  // return randomArray;
+
