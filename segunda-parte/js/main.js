@@ -24,6 +24,10 @@ let numeroSuma3 = document.getElementById("numeroSuma3");
 let btnSuma = document.getElementById("btnSuma");
 let alertSuma = document.getElementById("alertSuma");
 
+// Variables del ejercicio 6
+let numParImpar = document.getElementById("numParImpar");
+let btnNumParImpar = document.getElementById("btnNumParImpar");
+let alertNumParImpar = document.getElementById("alertNumParImpar");
 
 
 // Solicitar 3 números (entre el 1 y el 100) y definir cual es el mayor
@@ -103,4 +107,15 @@ function numerosSuman(num1, num2, num3) {
   }
 }
 
+// Elabora un algoritmo para leer un número y determinar si es par o impar
+btnNumParImpar.addEventListener("click", determinaParImpar);
 
+function determinaParImpar(num){
+  num = parseInt(numParImpar.value);
+  residuo = num % 2;
+  if (residuo == 0){
+    alertNumParImpar.innerHTML = `${num} es un número par`;
+  } else {
+    alertNumParImpar.innerHTML = `${num} es un número impar`;
+  }
+}
