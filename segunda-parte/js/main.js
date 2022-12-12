@@ -119,3 +119,60 @@ function determinaParImpar(num){
     alertNumParImpar.innerHTML = `${num} es un número impar`;
   }
 }
+
+// Adivinar un número entre el 1 y el 100 en el menor número de pasos posibles
+// Variables del ejercicio 3
+let adivinarNum = document.getElementById("adivinarNum");
+let btnAdivinarNum = document.getElementById("btnAdivinarNum");
+let alertAdivinarNum = document.getElementById("alertAdivinarNum");
+let vidas = 5;
+let numRandom = Math.floor((Math.random() * 100) +1);
+let alertNumVidas = document.getElementById("numVidas");
+let btnReset;
+
+
+btnAdivinarNum.addEventListener("click", jugarAdivinarNumero);
+
+function jugarAdivinarNumero(num){
+  num = parseInt(adivinarNum.value);
+  if (num == numRandom){
+    alertAdivinarNum.innerHTML = "Felicidades! Adivinaste el número oculto";
+    detenerJuego();
+  } else if (vidas == 0){
+    alertAdivinarNum.innerHTML = "Haz perdido!";
+    alertNumVidas.innerHTML = `Te quedan ${vidas} vidas.`;
+    detenerJuego();
+  } else if (num < numRandom) {
+    alertAdivinarNum.innerHTML = "Tu número es muy pequeño, trata con uno mayor.";
+    alertNumVidas.innerHTML = `Te quedan ${vidas} vidas.`;
+  } else if (num > numRandom) {
+    alertAdivinarNum.innerHTML = "Ese es un número mayor, trata con uno más pequeño.";
+    alertNumVidas.innerHTML = `Te quedan ${vidas} vidas.`;
+  }
+
+  // if (vidas == 0) {
+  //   alertAdivinarNum.innerHTML = "Haz perdido!";
+  //   detenerJuego();
+  // }
+
+  adivinarNum.focus();
+  vidas--;
+}
+
+function detenerJuego() {
+  btnAdivinarNum.disabled = true;
+  adivinarNum.disabled = true;
+  btnReset = document.createElement("button");
+  btnReset.textContent = "Reiniciar juego";
+  document.body.appendChild(btnReset);
+  btnReset.addEventListener("click", reiniciarJuego);
+}
+
+function reiniciarJuego(){
+  btnAdivinarNum.disabled = false;
+  adivinarNum.disabled = false;
+  adivinarNum.textContent = "";
+  vidas = 4;
+  numRandom = Math.floor((Math.random() * 100) +1);
+  btnReset.parentNode.removeChild(btnReset);
+}
